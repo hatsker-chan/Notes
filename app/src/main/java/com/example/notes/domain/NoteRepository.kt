@@ -1,10 +1,12 @@
 package com.example.notes.domain
 
+import androidx.lifecycle.LiveData
+
 interface NoteRepository {
 
-    fun getNoteList(): List<Note>
+    fun getNoteList(): LiveData<List<Note>>
 
-    fun getNote(noteId: Int)
+    fun getNote(noteId: Int): Note
 
     fun addNote(note: Note)
 

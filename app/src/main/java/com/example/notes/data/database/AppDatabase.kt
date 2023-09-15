@@ -1,16 +1,33 @@
 package com.example.notes.data.database
 
+import android.app.Application
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-abstract class AppDatabase: RoomDatabase() {
+@Database(entities = [NoteDbModel::class], version = 1, exportSchema = false)
+abstract class AppDatabase : RoomDatabase() {
 
-    companion object{
+    abstract fun noteDao(): NoteDao
 
-        private var instance: AppDatabase? = null
+    companion object {
+        private const val NAME = "main.db"
 
-        fun getInstance(){
+        private var INSTANCE: AppDatabase? = null
 
+        fun getInstance(application: Application): AppDatabase {
+            INSTANCE?.let {
+                return it
+            }
+            val database = Room.databaseBuilder(
+                application,
+                AppDatabase::class.java,
+                NAME
+            ).build()
+            INSTANCE = database
+            return database
         }
     }
+
+
 }

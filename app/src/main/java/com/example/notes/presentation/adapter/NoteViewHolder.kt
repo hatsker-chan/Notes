@@ -1,0 +1,7 @@
+package com.example.notes.presentation.adapter
+
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.notes.databinding.NoteItemBinding
+
+class NoteViewHolder(binding: NoteItemBinding) : ViewHolder(binding.root) {
+}
