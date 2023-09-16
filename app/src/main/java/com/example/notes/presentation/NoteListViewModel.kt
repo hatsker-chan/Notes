@@ -1,23 +1,35 @@
 package com.example.notes.presentation
 
 import android.app.Application
-import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.notes.data.NoteRepositoryImpl
+import com.example.notes.domain.AddNoteUseCase
 import com.example.notes.domain.GetNoteListUseCase
-import com.example.notes.domain.GetNoteUseCase
+import com.example.notes.domain.Note
 import com.example.notes.domain.RemoveNoteUseCase
+import kotlinx.coroutines.launch
 
-class NoteListViewModel(application: Application) : AndroidViewModel(application) {
+class NoteListViewModel(private val application: Application) : AndroidViewModel(application) {
 
     private val repository = NoteRepositoryImpl(application)
 
-    private val getNoteUseCase = GetNoteUseCase(repository)
     private val getNoteListUseCase = GetNoteListUseCase(repository)
     private val removeNoteUseCase = RemoveNoteUseCase(repository)
+    private val addNoteUseCase = AddNoteUseCase(repository)
 
     val notes = getNoteListUseCase()
 
+    fun addNote(note: Note) {
+        viewModelScope.launch {
+            addNoteUseCase(note)
+        }
+    }
+
+
+    fun removeNote(noteId: Int) {
+        viewModelScope.launch {
+            removeNoteUseCase(noteId)
+        }
+    }
 }

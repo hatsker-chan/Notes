@@ -19,14 +19,17 @@
         android:padding="8dp">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:text="Some title" />
+            android:visibility="visible"
+            tools:text="Title" />
 
         <TextView
+            android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -34,10 +37,11 @@
             tools:text="Some description Some descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome descriptionSome description" />
 
         <TextView
+            android:id="@+id/tv_datetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             tools:text="12 июня" />
     </LinearLayout>
 

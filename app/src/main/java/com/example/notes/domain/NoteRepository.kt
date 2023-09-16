@@ -8,11 +8,11 @@ interface NoteRepository {
 
     fun getNote(noteId: Int): Note
 
-    fun addNote(note: Note)
+    suspend fun addNote(note: Note)
 
     fun addNoteToFavourites(note: Note)
 
-    fun removeNote(note: Note)
+    suspend fun removeNote(noteId: Int)
 
     fun editNote(note: Note)
 }

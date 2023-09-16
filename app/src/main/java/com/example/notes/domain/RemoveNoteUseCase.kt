@@ -3,7 +3,7 @@ package com.example.notes.domain
 class RemoveNoteUseCase(
     private val repository: NoteRepository
 ) {
-    operator fun invoke(note: Note){
-        repository.removeNote(note)
+    suspend operator fun invoke(noteId: Int){
+        repository.removeNote(noteId)
     }
 }

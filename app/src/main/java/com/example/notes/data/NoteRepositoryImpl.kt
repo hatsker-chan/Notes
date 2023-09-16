@@ -10,6 +10,7 @@ import com.example.notes.domain.NoteRepository
 
 class NoteRepositoryImpl(application: Application) : NoteRepository {
 
+
     private val noteDao = AppDatabase.getInstance(application).noteDao()
     private val mapper = NoteMapper()
 
@@ -21,18 +22,18 @@ class NoteRepositoryImpl(application: Application) : NoteRepository {
         return mapper.mapDbModelToEntity(noteDao.getNote(noteId))
     }
 
-    override fun addNote(note: Note) {
+    override suspend fun addNote(note: Note) {
         noteDao.addNote(mapper.mapEntityToDbModel(note))
     }
 
     override fun addNoteToFavourites(note: Note) {
     }
 
-    override fun removeNote(note: Note) {
-        noteDao.deleteNote(note.id)
+    override suspend fun removeNote(noteId: Int) {
+        noteDao.deleteNote(noteId)
     }
 
     override fun editNote(note: Note) {
-        noteDao.addNote(mapper.mapEntityToDbModel(note))
+        //noteDao.addNote(mapper.mapEntityToDbModel(note))
     }
 }
