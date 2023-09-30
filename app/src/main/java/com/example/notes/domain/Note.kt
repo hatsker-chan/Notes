@@ -5,6 +5,7 @@ data class Note(
     val title: String,
     val description: String,
     var datetime: String,
+    var isFavourite: Boolean = false
 ) {
     companion object {
         const val UNDEFINED_ID = 0
