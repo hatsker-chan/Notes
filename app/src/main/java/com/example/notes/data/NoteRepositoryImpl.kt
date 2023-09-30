@@ -18,7 +18,7 @@ class NoteRepositoryImpl(application: Application) : NoteRepository {
         it.map { mapper.mapDbModelToEntity(it) }
     }
 
-    override fun getNote(noteId: Int): Note {
+    override suspend fun getNote(noteId: Int): Note {
         return mapper.mapDbModelToEntity(noteDao.getNote(noteId))
     }
 
@@ -33,7 +33,7 @@ class NoteRepositoryImpl(application: Application) : NoteRepository {
         noteDao.deleteNote(noteId)
     }
 
-    override fun editNote(note: Note) {
-        //noteDao.addNote(mapper.mapEntityToDbModel(note))
+    override suspend fun editNote(note: Note) {
+        noteDao.addNote(mapper.mapEntityToDbModel(note))
     }
 }

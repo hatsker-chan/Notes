@@ -6,7 +6,7 @@ interface NoteRepository {
 
     fun getNoteList(): LiveData<List<Note>>
 
-    fun getNote(noteId: Int): Note
+    suspend fun getNote(noteId: Int): Note
 
     suspend fun addNote(note: Note)
 
@@ -14,5 +14,5 @@ interface NoteRepository {
 
     suspend fun removeNote(noteId: Int)
 
-    fun editNote(note: Note)
+    suspend fun editNote(note: Note)
 }

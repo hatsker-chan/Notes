@@ -13,7 +13,7 @@ interface NoteDao {
     fun getNoteList(): LiveData<List<NoteDbModel>>
 
     @Query("SELECT * FROM notes WHERE id=:noteId LIMIT 1")
-    fun getNote(noteId: Int): NoteDbModel
+    suspend fun getNote(noteId: Int): NoteDbModel
 
     @Query("DELETE FROM notes WHERE id=:noteId")
     suspend fun deleteNote(noteId: Int)

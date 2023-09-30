@@ -6,12 +6,14 @@ class NoteMapper {
     fun mapDbModelToEntity(dbModel: NoteDbModel): Note = Note(
         id = dbModel.id,
         title = dbModel.title,
-        description = dbModel.description
+        description = dbModel.description,
+        datetime = dbModel.dateTime
     )
 
     fun mapEntityToDbModel(note: Note): NoteDbModel = NoteDbModel(
         id = note.id,
         title = note.title,
-        description = note.description
+        description = note.description,
+        dateTime = note.datetime
     )
 }

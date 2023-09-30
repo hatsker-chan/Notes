@@ -36,8 +36,6 @@ class NoteListActivity : AppCompatActivity() {
             val intent = NoteItemActivity.newIntentAddMode(this)
             startActivity(intent)
         }
-
-
     }
 
     private fun setSwipeListener() {
@@ -68,6 +66,10 @@ class NoteListActivity : AppCompatActivity() {
     private fun setupRv() {
         binding.rvNoteList.adapter = noteListAdapter
 
+        noteListAdapter.onNoteClickListener = {
+            val intent = NoteItemActivity.newIntentEditMode(this, it)
+            startActivity(intent)
+        }
         setSwipeListener()
     }
 }

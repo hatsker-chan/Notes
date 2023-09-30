@@ -2,6 +2,7 @@ package com.example.notes.presentation.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.notes.databinding.NoteItemBinding
@@ -27,13 +28,27 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
         val binding = holder.binding
 
         with(binding) {
-            tvTitle.text = note.title
-            tvDescription.text = note.description
+            if (note.title.trim().isEmpty()) {
+                tvTitle.visibility = View.GONE
+            } else {
+                tvTitle.text = note.title
+            }
+
+            if (note.description.trim().isEmpty()) {
+                tvDescription.visibility = View.GONE
+            } else {
+                tvDescription.text = note.description
+            }
+
             tvDatetime.text = "14 сентября"
 
-            binding.root.setOnClickListener {
+            root.setOnClickListener {
                 onNoteClickListener?.invoke(note)
             }
         }
+    }
+
+    private fun getDatetime() {
+
     }
 }
