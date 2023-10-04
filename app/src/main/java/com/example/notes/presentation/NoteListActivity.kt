@@ -70,6 +70,10 @@ class NoteListActivity : AppCompatActivity() {
             val intent = NoteItemActivity.newIntentEditMode(this, it)
             startActivity(intent)
         }
+
+        noteListAdapter.onNoteLongClickListener = {
+            viewModel.addNoteToFavourites(it)
+        }
         setSwipeListener()
     }
 }

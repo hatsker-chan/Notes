@@ -12,6 +12,8 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
 
     var onNoteClickListener: ((Note) -> Unit)? = null
 
+    var onNoteLongClickListener: ((Note) -> Boolean)? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         Log.d("RecyclerView", "OnCreate")
@@ -40,10 +42,21 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                 tvDescription.text = note.description
             }
 
+            if (note.isFavourite){
+                binding.ivFavourite.visibility = View.VISIBLE
+            } else {
+                binding.ivFavourite.visibility = View.GONE
+            }
+
             tvDatetime.text = "14 сентября"
 
             root.setOnClickListener {
                 onNoteClickListener?.invoke(note)
+            }
+
+            root.setOnLongClickListener{
+                onNoteLongClickListener?.invoke(note)
+                return@setOnLongClickListener true
             }
         }
     }

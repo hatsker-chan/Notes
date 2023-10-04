@@ -52,6 +52,7 @@
                 tools:text="12 июня" />
 
             <ImageView
+                android:id="@+id/iv_favourite"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/favourite"
