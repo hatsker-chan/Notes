@@ -33,13 +33,15 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
             if (note.title.trim().isEmpty()) {
                 tvTitle.visibility = View.GONE
             } else {
+                tvTitle.visibility = View.VISIBLE
                 tvTitle.text = note.title
             }
 
             if (note.description.trim().isEmpty()) {
                 tvDescription.visibility = View.GONE
             } else {
-                tvDescription.text = note.description
+                tvDescription.visibility = View.VISIBLE
+                tvDescription.text = makeDescriptionShorter(note.description)
             }
 
             if (note.isFavourite){
@@ -47,7 +49,9 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
             } else {
                 binding.ivFavourite.visibility = View.GONE
             }
+
             tvDatetime.text = note.datetime
+
             root.setOnClickListener {
                 onNoteClickListener?.invoke(note)
             }
@@ -57,5 +61,24 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                 return@setOnLongClickListener true
             }
         }
+    }
+
+    private fun makeDescriptionShorter(description: String): String{
+
+        if (description.length > 200){
+            return description.substring(0, 200) + "\n..."
+        }
+
+        if (description.count { it == '\n' } >= 7) {
+            var indexOfN = 0
+            var count = 0
+            for (i in description.indices){
+                if(description[i] == '\n')
+                    count++
+                if(count == 7) indexOfN = i
+            }
+            return description.substring(0, indexOfN - 1) + "\n..."
+        }
+        return description
     }
 }
