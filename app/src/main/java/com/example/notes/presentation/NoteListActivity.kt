@@ -87,7 +87,7 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
-            R.id.favourites -> {
+            R.id.item_favourites -> {
                 val intent = NoteListOfFavouritesActivity.newIntent(this)
                 startActivity(intent)
             }

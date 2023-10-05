@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_favourites"
-        android:title="Избранные"
+        android:id="@+id/item_exit_favourites"
+        android:title="Выйти из избранных"
         />
 </menu>

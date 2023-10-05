@@ -11,6 +11,8 @@ import com.example.notes.domain.EditNoteUseCase
 import com.example.notes.domain.GetNoteUseCase
 import com.example.notes.domain.Note
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class NoteItemViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -47,7 +49,7 @@ class NoteItemViewModel(application: Application) : AndroidViewModel(application
                 Note(
                     title = inputTitle,
                     description = inputDescription,
-                    datetime = "1 октября"
+                    datetime = getCurrentDateTime()
                 )
             )
             finishWork()
@@ -60,15 +62,24 @@ class NoteItemViewModel(application: Application) : AndroidViewModel(application
         }
         viewModelScope.launch {
             _noteItem.value?.let {
-                val copyNote = it.copy(title = inputTitle, description = inputDescription)
+                val copyNote = it.copy(
+                    title = inputTitle,
+                    description = inputDescription,
+                    datetime = getCurrentDateTime()
+                )
                 editNoteUseCase(copyNote)
             }
             finishWork()
         }
-
     }
 
     private fun finishWork() {
         _shouldFinishFragment.value = true
+    }
+
+    private fun getCurrentDateTime(): String{
+        val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy HH:mm ") // "yyyy-MM-dd HH:mm"
+        val current = LocalDateTime.now().format(formatter)
+        return current
     }
 }

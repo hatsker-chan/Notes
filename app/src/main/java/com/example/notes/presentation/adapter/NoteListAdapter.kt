@@ -47,9 +47,7 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
             } else {
                 binding.ivFavourite.visibility = View.GONE
             }
-
-            tvDatetime.text = "14 сентября"
-
+            tvDatetime.text = note.datetime
             root.setOnClickListener {
                 onNoteClickListener?.invoke(note)
             }
@@ -59,9 +57,5 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                 return@setOnLongClickListener true
             }
         }
-    }
-
-    private fun getDatetime() {
-
     }
 }
