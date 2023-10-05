@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.notes.data.NoteRepositoryImpl
 import com.example.notes.domain.EditNoteUseCase
+import com.example.notes.domain.GetFavouritesUseCase
 import com.example.notes.domain.GetNoteListUseCase
 import com.example.notes.domain.Note
 import com.example.notes.domain.RemoveNoteUseCase
@@ -17,8 +18,11 @@ class NoteListViewModel(private val application: Application) : AndroidViewModel
     private val getNoteListUseCase = GetNoteListUseCase(repository)
     private val removeNoteUseCase = RemoveNoteUseCase(repository)
     private val editNoteUseCase = EditNoteUseCase(repository)
+    private val getFavouritesUseCase = GetFavouritesUseCase(repository)
 
     val notes = getNoteListUseCase()
+
+    val favouriteNotes = getFavouritesUseCase()
 
 
     fun removeNote(noteId: Int) {
@@ -34,4 +38,5 @@ class NoteListViewModel(private val application: Application) : AndroidViewModel
         }
         return true
     }
+
 }

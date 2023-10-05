@@ -12,6 +12,9 @@ interface NoteDao {
     @Query("SELECT * FROM notes")
     fun getNoteList(): LiveData<List<NoteDbModel>>
 
+    @Query("SELECT * FROM notes WHERE isFavourite = 1")
+    fun getNoteListOfFavourites(): LiveData<List<NoteDbModel>>
+
     @Query("SELECT * FROM notes WHERE id=:noteId LIMIT 1")
     suspend fun getNote(noteId: Int): NoteDbModel
 

@@ -6,6 +6,8 @@ interface NoteRepository {
 
     fun getNoteList(): LiveData<List<Note>>
 
+    fun getNoteListOfFavourites(): LiveData<List<Note>>
+
     suspend fun getNote(noteId: Int): Note
 
     suspend fun addNote(note: Note)

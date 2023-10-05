@@ -1,9 +1,10 @@
 package com.example.notes.presentation
 
+import android.content.Context
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -11,8 +12,7 @@ import com.example.notes.R
 import com.example.notes.databinding.ActivityNoteListBinding
 import com.example.notes.presentation.adapter.NoteListAdapter
 
-class NoteListActivity : AppCompatActivity() {
-
+class NoteListOfFavouritesActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityNoteListBinding.inflate(layoutInflater)
     }
@@ -31,7 +31,7 @@ class NoteListActivity : AppCompatActivity() {
 
         setupRv()
 
-        viewModel.notes.observe(this) {
+        viewModel.favouriteNotes.observe(this) {
             noteListAdapter.submitList(it)
         }
 
@@ -85,13 +85,9 @@ class NoteListActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
-            R.id.favourites -> {
-                val intent = NoteListOfFavouritesActivity.newIntent(this)
-                startActivity(intent)
-            }
+    companion object {
+        fun newIntent(context: Context): Intent{
+            return Intent(context, NoteListOfFavouritesActivity::class.java)
         }
-        return super.onOptionsItemSelected(item)
     }
 }
