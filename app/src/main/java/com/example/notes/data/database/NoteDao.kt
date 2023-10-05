@@ -9,10 +9,10 @@ import androidx.room.Query
 @Dao
 interface NoteDao {
 
-    @Query("SELECT * FROM notes")
+    @Query("SELECT * FROM notes ORDER BY id DESC")
     fun getNoteList(): LiveData<List<NoteDbModel>>
 
-    @Query("SELECT * FROM notes WHERE isFavourite = 1")
+    @Query("SELECT * FROM notes WHERE isFavourite = 1 ORDER BY id DESC")
     fun getNoteListOfFavourites(): LiveData<List<NoteDbModel>>
 
     @Query("SELECT * FROM notes WHERE id=:noteId LIMIT 1")
