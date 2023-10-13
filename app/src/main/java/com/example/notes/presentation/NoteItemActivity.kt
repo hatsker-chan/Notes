@@ -2,11 +2,8 @@ package com.example.notes.presentation
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.preference.PreferenceManager
 import com.example.notes.R
 import com.example.notes.databinding.ActivityNoteItemBinding
@@ -35,7 +32,6 @@ class NoteItemActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, NoteItemFragment.newInstance())
             .commit()
     }
-
 
 
     companion object {

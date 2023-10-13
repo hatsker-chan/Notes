@@ -11,5 +11,5 @@ class NoteDbModel(
     val title: String,
     val description: String,
     val dateTime: String,
-    val isFavourite:Boolean
+    val isFavourite: Boolean
 )

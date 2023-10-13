@@ -2,10 +2,10 @@ package com.example.notes.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -92,7 +92,7 @@ class NoteListOfFavouritesActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.item_exit_favourites -> {
                 finish()
             }
@@ -101,7 +101,7 @@ class NoteListOfFavouritesActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun newIntent(context: Context): Intent{
+        fun newIntent(context: Context): Intent {
             return Intent(context, NoteListOfFavouritesActivity::class.java)
         }
     }

@@ -19,7 +19,7 @@ class NoteRepositoryImpl(application: Application) : NoteRepository {
     }
 
     override fun getNoteListOfFavourites(): LiveData<List<Note>> {
-        return Transformations.map(noteDao.getNoteListOfFavourites()){
+        return Transformations.map(noteDao.getNoteListOfFavourites()) {
             it.map { mapper.mapDbModelToEntity(it) }
         }
     }

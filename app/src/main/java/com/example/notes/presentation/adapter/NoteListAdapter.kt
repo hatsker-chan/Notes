@@ -44,7 +44,7 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                 tvDescription.text = makeDescriptionShorter(note.description)
             }
 
-            if (note.isFavourite){
+            if (note.isFavourite) {
                 binding.ivFavourite.visibility = View.VISIBLE
             } else {
                 binding.ivFavourite.visibility = View.GONE
@@ -56,26 +56,26 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                 onNoteClickListener?.invoke(note)
             }
 
-            root.setOnLongClickListener{
+            root.setOnLongClickListener {
                 onNoteLongClickListener?.invoke(note)
                 return@setOnLongClickListener true
             }
         }
     }
 
-    private fun makeDescriptionShorter(description: String): String{
+    private fun makeDescriptionShorter(description: String): String {
 
-        if (description.length > 200){
+        if (description.length > 200) {
             return description.substring(0, 200) + "\n..."
         }
 
         if (description.count { it == '\n' } >= 7) {
             var indexOfN = 0
             var count = 0
-            for (i in description.indices){
-                if(description[i] == '\n')
+            for (i in description.indices) {
+                if (description[i] == '\n')
                     count++
-                if(count == 7) indexOfN = i
+                if (count == 7) indexOfN = i
             }
             return description.substring(0, indexOfN - 1) + "\n..."
         }

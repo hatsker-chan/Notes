@@ -123,10 +123,10 @@ class NoteListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    companion object{
+    companion object {
         const val EXTRA_THEME_KEY = "theme"
 
-        fun newIntent(context: Context): Intent{
+        fun newIntent(context: Context): Intent {
             return Intent(context, NoteListActivity::class.java)
         }
     }

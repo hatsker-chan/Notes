@@ -12,8 +12,7 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_save"
-        app:layout_constraintTop_toBottomOf="@id/et_title"
-        >
+        app:layout_constraintTop_toBottomOf="@id/et_title">
 
         <EditText
             android:id="@+id/et_description"

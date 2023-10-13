@@ -31,7 +31,7 @@ class NoteListViewModel(private val application: Application) : AndroidViewModel
         }
     }
 
-    fun addNoteToFavourites(note: Note): Boolean{
+    fun addNoteToFavourites(note: Note): Boolean {
         viewModelScope.launch {
             val copy = note.copy(isFavourite = !note.isFavourite)
             editNoteUseCase(copy)

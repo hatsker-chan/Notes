@@ -1,7 +1,6 @@
 package com.example.notes.presentation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -79,7 +78,7 @@ class NoteItemViewModel(application: Application) : AndroidViewModel(application
         _shouldFinishFragment.value = true
     }
 
-    private fun getCurrentDateTime(): String{
+    private fun getCurrentDateTime(): String {
         val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy HH:mm ") // "yyyy-MM-dd HH:mm"
         val current = LocalDateTime.now().format(formatter)
         return current
