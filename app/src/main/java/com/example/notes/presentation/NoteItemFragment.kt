@@ -1,8 +1,6 @@
 package com.example.notes.presentation
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,15 +20,6 @@ class NoteItemFragment : Fragment() {
     private var _binding: FragmentNoteItemBinding? = null
     private val binding: FragmentNoteItemBinding
         get() = _binding ?: throw RuntimeException("FragmentNoteItemBinding == null")
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,10 +46,10 @@ class NoteItemFragment : Fragment() {
             val description = binding.etDescription.text.trim().toString()
             viewModel.addNote(title, description)
         }
+
     }
 
     private fun launchEditMode(noteId: Int) {
-        Log.d("TEST", "$noteId")
         viewModel.getNote(noteId)
         viewModel.noteItem.observe(viewLifecycleOwner) {
             with(binding) {

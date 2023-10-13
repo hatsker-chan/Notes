@@ -49,7 +49,7 @@ class NoteListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        supportActionBar?.title = "Заметки"
+        supportActionBar?.title = getString(R.string.main_screen_action_bar)
     }
 
 

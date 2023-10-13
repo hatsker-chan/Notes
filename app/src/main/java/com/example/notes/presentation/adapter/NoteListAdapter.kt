@@ -1,6 +1,5 @@
 package com.example.notes.presentation.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        Log.d("RecyclerView", "OnCreate")
         val binding = NoteItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -76,7 +74,7 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                     count++
                 if (count == 7) indexOfN = i
             }
-            return description.substring(0, indexOfN+1) + "\n..."
+            return description.substring(0, indexOfN + 1) + "\n..."
         }
         return description
     }

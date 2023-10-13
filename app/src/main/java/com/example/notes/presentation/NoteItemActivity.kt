@@ -23,8 +23,18 @@ class NoteItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
+        parseIntent()
         setContentView(binding.root)
         launchFragment()
+    }
+
+    private fun parseIntent(){
+        val mode = this.intent.getStringExtra(EXTRA_MODE) ?: throw RuntimeException("no mode param in intent")
+
+        when (mode){
+            ADD_MODE -> supportActionBar?.setTitle(getString(R.string.add_screen_action_bar))
+            EDIT_MODE -> supportActionBar?.setTitle(getString(R.string.edit_screen_action_bar))
+        }
     }
 
     private fun launchFragment() {

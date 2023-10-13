@@ -23,8 +23,11 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
+        setTheme(settings.getInt(EXTRA_THEME_KEY, R.style.Green_Theme_Notes))
+        binding.rgThemes.check(settings.getInt(KEY_CHECKED_RADIOBUTTON, R.id.rb_green_theme))
         setContentView(binding.root)
+
+        supportActionBar?.title = getString(R.string.setting_screen_action_bar)
 
         binding.rgThemes.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
@@ -42,19 +45,30 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
+
+
         binding.btSaveSettings.setOnClickListener {
             when (binding.rgThemes.checkedRadioButtonId) {
-                binding.rbGreenTheme.id -> settings.edit()
-                    .putInt(EXTRA_THEME_KEY, R.style.Green_Theme_Notes).apply()
+                binding.rbGreenTheme.id -> settings.edit().apply {
+                    putInt(EXTRA_THEME_KEY, R.style.Green_Theme_Notes).apply()
+                    putInt(KEY_CHECKED_RADIOBUTTON, binding.rbGreenTheme.id).apply()
+                }
 
-                binding.rbPurpleTheme.id -> settings.edit()
-                    .putInt(EXTRA_THEME_KEY, R.style.Purple_Theme_Notes).apply()
 
-                binding.rbRedTheme.id -> settings.edit()
-                    .putInt(EXTRA_THEME_KEY, R.style.Red_Theme_Notes).apply()
+                binding.rbPurpleTheme.id -> settings.edit().apply {
+                    putInt(EXTRA_THEME_KEY, R.style.Purple_Theme_Notes).apply()
+                    putInt(KEY_CHECKED_RADIOBUTTON, binding.rbPurpleTheme.id).apply()
+                }
 
-                binding.rbBlueTheme.id -> settings.edit()
-                    .putInt(EXTRA_THEME_KEY, R.style.Blue_Theme_Notes).apply()
+                binding.rbRedTheme.id -> settings.edit().apply {
+                    putInt(EXTRA_THEME_KEY, R.style.Red_Theme_Notes).apply()
+                    putInt(KEY_CHECKED_RADIOBUTTON, binding.rbRedTheme.id).apply()
+                }
+
+                binding.rbBlueTheme.id -> settings.edit().apply {
+                    putInt(EXTRA_THEME_KEY, R.style.Blue_Theme_Notes).apply()
+                    putInt(KEY_CHECKED_RADIOBUTTON, binding.rbBlueTheme.id).apply()
+                }
             }
 
             application.setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
@@ -70,5 +84,7 @@ class SettingsActivity : AppCompatActivity() {
         fun newIntent(context: Context): Intent {
             return Intent(context, SettingsActivity::class.java)
         }
+
+        private const val KEY_CHECKED_RADIOBUTTON = "radioButton"
     }
 }

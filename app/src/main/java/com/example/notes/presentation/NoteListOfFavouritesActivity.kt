@@ -45,6 +45,7 @@ class NoteListOfFavouritesActivity : AppCompatActivity() {
             val intent = NoteItemActivity.newIntentAddMode(this)
             startActivity(intent)
         }
+        supportActionBar?.title = getString(R.string.favourite_screen_action_bar)
     }
 
     private fun setSwipeListener() {

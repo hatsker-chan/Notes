@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Зеленый цвет"
+            android:text="@string/green_color_theme_label"
             android:textSize="28sp" />
 
         <RadioButton
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Фиолетовый цвет"
+            android:text="@string/purple_color_theme_label"
             android:textSize="28sp" />
 
         <RadioButton
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Красный цвет"
+            android:text="@string/red_color_theme_label"
             android:textSize="28sp" />
 
         <RadioButton
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Синий цвет"
+            android:text="@string/blue_color_theme_label"
             android:textSize="28sp" />
     </RadioGroup>
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Сохранить"
+        android:text="@string/set_theme_button"
         android:textSize="24sp" />
 
 

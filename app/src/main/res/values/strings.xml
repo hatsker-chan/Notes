@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Notes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="description_note_hint">Текст заметки:</string>
+    <string name="note_title_hint">Заголовок:</string>
+    <string name="save_note_button">Сохранить</string>
+    <string name="green_color_theme_label">Зеленый цвет</string>
+    <string name="purple_color_theme_label">Фиолетовый цвет</string>
+    <string name="red_color_theme_label">Красный цвет</string>
+    <string name="blue_color_theme_label">Синий цвет</string>
+    <string name="set_theme_button">Применить</string>
+    <string name="main_screen_action_bar">Заметки</string>
+    <string name="favourite_screen_action_bar">Избранные</string>
+    <string name="add_screen_action_bar">Добавить заметку</string>
+    <string name="edit_screen_action_bar">Редактировать заметку</string>
+    <string name="setting_screen_action_bar">Настройки</string>
 </resources>
