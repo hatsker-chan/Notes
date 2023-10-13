@@ -1,10 +1,15 @@
 package com.example.notes.presentation
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.R
@@ -24,11 +29,16 @@ class NoteListActivity : AppCompatActivity() {
     private val noteListAdapter by lazy {
         NoteListAdapter()
     }
+    private val settings by lazy {
+        PreferenceManager.getDefaultSharedPreferences(application)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
         setContentView(binding.root)
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setupRv()
 
         viewModel.notes.observe(this) {
@@ -39,6 +49,18 @@ class NoteListActivity : AppCompatActivity() {
             val intent = NoteItemActivity.newIntentAddMode(this)
             startActivity(intent)
         }
+
+        supportActionBar?.title = "Заметки"
+    }
+
+    private fun getThemeFromSettings(): Int {
+        return settings.getInt(EXTRA_THEME_KEY, 0)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("TEST_TAG", "${this.theme} , ${getThemeFromSettings()}")
     }
 
     private fun setSwipeListener() {
@@ -80,18 +102,32 @@ class NoteListActivity : AppCompatActivity() {
         setSwipeListener()
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
+        when (item.itemId) {
             R.id.item_favourites -> {
                 val intent = NoteListOfFavouritesActivity.newIntent(this)
                 startActivity(intent)
             }
+
+            R.id.item_settings -> {
+                val intent = SettingsActivity.newIntent(this)
+                startActivity(intent)
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object{
+        const val EXTRA_THEME_KEY = "theme"
+
+        fun newIntent(context: Context): Intent{
+            return Intent(context, NoteListActivity::class.java)
+        }
     }
 }

@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.R
 import com.example.notes.databinding.ActivityNoteListBinding
+import com.example.notes.presentation.NoteListActivity.Companion.EXTRA_THEME_KEY
 import com.example.notes.presentation.adapter.NoteListAdapter
 
 class NoteListOfFavouritesActivity : AppCompatActivity() {
@@ -26,12 +28,15 @@ class NoteListOfFavouritesActivity : AppCompatActivity() {
         NoteListAdapter()
     }
 
+    private val settings by lazy {
+        PreferenceManager.getDefaultSharedPreferences(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
         setContentView(binding.root)
-
         setupRv()
-
         viewModel.favouriteNotes.observe(this) {
             noteListAdapter.submitList(it)
         }

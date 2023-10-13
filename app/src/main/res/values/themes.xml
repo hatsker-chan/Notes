@@ -1,9 +1,33 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Notes" parent="Theme.Material3.Light">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <attr name="noteItemBackground" format="color"/>
+    <attr name="buttonBackground" format="color"/>
+    <attr name="backgroundScreen" format="color"/>
+    <attr name="actionBarBackground" format="color"/>
+
+
+    <style name="Green.Theme.Notes" parent="Theme.Material3.Light">
+        <item name="noteItemBackground">#4DF19C</item>
+        <item name="backgroundScreen">#404DF19C</item>
+        <item name="colorPrimary">#39B575</item>
     </style>
 
-    <style name="Theme.Notes" parent="Theme.Material3.Light" />
+    <style name="Purple.Theme.Notes" parent="Theme.Material3.Light">
+        <item name="noteItemBackground">#B581FD</item>
+        <item name="backgroundScreen">#40AD4DF1</item>
+        <item name="colorPrimary">#9E5CDA</item>
+    </style>
+
+    <style name="Red.Theme.Notes" parent="Theme.Material3.Light">
+        <item name="noteItemBackground">#F16D5B</item>
+        <item name="backgroundScreen">#40F1524D</item>
+        <item name="colorPrimary">#CC5040</item>
+    </style>
+
+    <style name="Blue.Theme.Notes" parent="Theme.Material3.Light">
+        <item name="noteItemBackground">#5B97F1</item>
+        <item name="backgroundScreen">#404D84F1</item>
+        <item name="colorPrimary">#4073CC</item>
+    </style>
+
 </resources>

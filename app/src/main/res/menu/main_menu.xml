@@ -4,4 +4,8 @@
         android:id="@+id/item_favourites"
         android:title="Избранные"
         />
+    <item
+        android:id="@+id/item_settings"
+        android:title="Настройки"
+        />
 </menu>

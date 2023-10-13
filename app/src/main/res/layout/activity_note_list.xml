@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.NoteListActivity"
-    android:background="@color/background"
+    android:background="?attr/backgroundScreen"
     >
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,7 +25,7 @@
         android:layout_margin="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        app:backgroundTint="#B38BDC"
+        android:backgroundTint="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />

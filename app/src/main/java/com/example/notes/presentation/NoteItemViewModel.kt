@@ -1,6 +1,7 @@
 package com.example.notes.presentation
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -67,6 +68,7 @@ class NoteItemViewModel(application: Application) : AndroidViewModel(application
                     description = inputDescription,
                     datetime = getCurrentDateTime()
                 )
+
                 editNoteUseCase(copyNote)
             }
             finishWork()

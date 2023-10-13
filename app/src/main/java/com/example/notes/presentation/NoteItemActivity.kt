@@ -2,11 +2,16 @@ package com.example.notes.presentation
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.preference.PreferenceManager
 import com.example.notes.R
 import com.example.notes.databinding.ActivityNoteItemBinding
 import com.example.notes.domain.Note
+import com.example.notes.presentation.NoteListActivity.Companion.EXTRA_THEME_KEY
 
 class NoteItemActivity : AppCompatActivity() {
 
@@ -14,18 +19,24 @@ class NoteItemActivity : AppCompatActivity() {
         ActivityNoteItemBinding.inflate(layoutInflater)
     }
 
+    private val settings by lazy {
+        PreferenceManager.getDefaultSharedPreferences(application)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
         setContentView(binding.root)
         launchFragment()
     }
 
     private fun launchFragment() {
-
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, NoteItemFragment.newInstance())
             .commit()
     }
+
+
 
     companion object {
         fun newIntentAddMode(context: Context): Intent {

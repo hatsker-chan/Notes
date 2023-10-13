@@ -7,7 +7,8 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginBottom="8dp"
-    android:backgroundTint="#4DF19C"
+    android:backgroundTint="?attr/noteItemBackground"
+
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
@@ -59,7 +60,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
