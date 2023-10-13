@@ -28,6 +28,4 @@ abstract class AppDatabase : RoomDatabase() {
             return database
         }
     }
-
-
 }

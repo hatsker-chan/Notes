@@ -64,9 +64,8 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
     }
 
     private fun makeDescriptionShorter(description: String): String {
-
         if (description.length > 200) {
-            return description.substring(0, 200) + "\n..."
+            return description.substring(0, 200 + 1) + "\n..."
         }
 
         if (description.count { it == '\n' } >= 7) {
@@ -77,7 +76,7 @@ class NoteListAdapter : ListAdapter<Note, NoteViewHolder>(NoteDiffUtil()) {
                     count++
                 if (count == 7) indexOfN = i
             }
-            return description.substring(0, indexOfN - 1) + "\n..."
+            return description.substring(0, indexOfN+1) + "\n..."
         }
         return description
     }

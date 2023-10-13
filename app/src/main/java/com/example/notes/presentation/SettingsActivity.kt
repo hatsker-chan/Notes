@@ -1,5 +1,6 @@
 package com.example.notes.presentation
 
+import android.app.TaskStackBuilder
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -57,8 +58,10 @@ class SettingsActivity : AppCompatActivity() {
             }
 
             application.setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
-            finish()
-            startActivity(NoteListActivity.newIntent(this))
+            TaskStackBuilder.create(this)
+                .addNextIntent(NoteListActivity.newIntent(this))
+                .addNextIntent(this.intent)
+                .startActivities()
         }
     }
 

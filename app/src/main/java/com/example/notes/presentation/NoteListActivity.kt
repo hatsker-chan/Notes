@@ -3,7 +3,6 @@ package com.example.notes.presentation
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -53,15 +52,6 @@ class NoteListActivity : AppCompatActivity() {
         supportActionBar?.title = "Заметки"
     }
 
-    private fun getThemeFromSettings(): Int {
-        return settings.getInt(EXTRA_THEME_KEY, 0)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("TEST_TAG", "${this.theme} , ${getThemeFromSettings()}")
-    }
 
     private fun setSwipeListener() {
         val callback = object :
@@ -124,10 +114,11 @@ class NoteListActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val EXTRA_THEME_KEY = "theme"
 
         fun newIntent(context: Context): Intent {
             return Intent(context, NoteListActivity::class.java)
         }
+
+        const val EXTRA_THEME_KEY = "theme"
     }
 }
