@@ -2,5 +2,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item_exit_favourites"
-        android:title="Выйти из избранных" />
+        android:title="@string/menu_item_cancel_favourites" />
 </menu>

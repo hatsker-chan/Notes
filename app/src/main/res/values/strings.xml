@@ -15,4 +15,7 @@
     <string name="add_screen_action_bar">Добавить заметку</string>
     <string name="edit_screen_action_bar">Редактировать заметку</string>
     <string name="setting_screen_action_bar">Настройки</string>
+    <string name="menu_item_favourites">Избранные</string>
+    <string name="menu_item_settings">Настройки</string>
+    <string name="menu_item_cancel_favourites">Выйти из избранных</string>
 </resources>
