@@ -1,18 +1,17 @@
 package com.example.notes.data
 
-import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.notes.data.database.AppDatabase
+import com.example.notes.data.database.NoteDao
 import com.example.notes.data.database.NoteMapper
 import com.example.notes.domain.Note
 import com.example.notes.domain.NoteRepository
+import javax.inject.Inject
 
-class NoteRepositoryImpl(application: Application) : NoteRepository {
-
-
-    private val noteDao = AppDatabase.getInstance(application).noteDao()
-    private val mapper = NoteMapper()
+class NoteRepositoryImpl @Inject constructor(
+    private val noteDao: NoteDao,
+    private val mapper: NoteMapper
+) : NoteRepository {
 
     override fun getNoteList(): LiveData<List<Note>> = Transformations.map(noteDao.getNoteList()) {
         it.map { mapper.mapDbModelToEntity(it) }

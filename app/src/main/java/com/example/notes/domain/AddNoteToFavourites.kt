@@ -1,6 +1,8 @@
 package com.example.notes.domain
 
-class AddNoteToFavourites(
+import javax.inject.Inject
+
+class AddNoteToFavourites @Inject constructor(
     private val repository: NoteRepository
 ) {
     operator fun invoke(note: Note) {

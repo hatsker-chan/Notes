@@ -1,25 +1,39 @@
 package com.example.notes.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.notes.MyApplication
 import com.example.notes.databinding.FragmentNoteItemBinding
 import com.example.notes.domain.Note
+import javax.inject.Inject
 
 
 class NoteItemFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val component by lazy {
+        (requireActivity().application as MyApplication).component
+    }
 
     private val viewModel by lazy {
-        ViewModelProvider(this)[NoteItemViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[NoteItemViewModel::class.java]
     }
 
     private var _binding: FragmentNoteItemBinding? = null
     private val binding: FragmentNoteItemBinding
         get() = _binding ?: throw RuntimeException("FragmentNoteItemBinding == null")
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        component.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

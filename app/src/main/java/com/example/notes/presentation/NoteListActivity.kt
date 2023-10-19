@@ -11,29 +11,42 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notes.MyApplication
 import com.example.notes.R
 import com.example.notes.databinding.ActivityNoteListBinding
 import com.example.notes.presentation.adapter.NoteListAdapter
+import javax.inject.Inject
 
 class NoteListActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val component by lazy {
+        (application as MyApplication).component
+    }
 
     private val binding by lazy {
         ActivityNoteListBinding.inflate(layoutInflater)
     }
 
     private val viewModel by lazy {
-        ViewModelProvider(this)[NoteListViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[NoteListViewModel::class.java]
     }
 
     private val noteListAdapter by lazy {
         NoteListAdapter()
     }
+
     private val settings by lazy {
         PreferenceManager.getDefaultSharedPreferences(application)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        component.inject(this)
+
         setTheme(settings.getInt(EXTRA_THEME_KEY, -1))
         setContentView(binding.root)
 

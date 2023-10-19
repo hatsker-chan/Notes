@@ -28,10 +28,11 @@ class NoteItemActivity : AppCompatActivity() {
         launchFragment()
     }
 
-    private fun parseIntent(){
-        val mode = this.intent.getStringExtra(EXTRA_MODE) ?: throw RuntimeException("no mode param in intent")
+    private fun parseIntent() {
+        val mode = this.intent.getStringExtra(EXTRA_MODE)
+            ?: throw RuntimeException("no mode param in intent")
 
-        when (mode){
+        when (mode) {
             ADD_MODE -> supportActionBar?.setTitle(getString(R.string.add_screen_action_bar))
             EDIT_MODE -> supportActionBar?.setTitle(getString(R.string.edit_screen_action_bar))
         }
